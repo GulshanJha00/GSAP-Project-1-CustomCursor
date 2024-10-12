@@ -5,7 +5,7 @@ Step 1:-
 Create html, css, js. Create boiler plate and add GSAP cdn
 
 Step 2:- 
-create a div #cursor with CSS :- h,w-20px, bg-white, border -50%
+Create a div #cursor with CSS :- h,w-20px, bg-white, border -50%
 position fixed  so that it will be on screen even if screen scrolls
 
 Step 3:- 
@@ -16,16 +16,20 @@ Step 4:-
 Select #main using query Selector(in script.js) and assign it to var main. Similarly do it for cursor
 
 Step 5:- 
-add event on variable main as mousemove and pass dets as function. you can check using console.log(dets.x) to check the coordinates of cursor in x direction. And dets.y to check coordinates of cursor in y direction
+Add event on variable main as mousemove and pass dets as function. you can check using console.log(dets.x) to check the coordinates of cursor in x direction. And dets.y to check coordinates of cursor in y direction
 
-pass dets as function and check the cords then go for dets.x and dets.y to check whats happening on x and y
+Step 6:-
+Now we have the coordinates of x and y while cursor is moving on the screen. Can you think of a property which is used to move any div in any direction? yes gsap.to.
+Now, 
+make gsap.to (to move element from initial pos to final pos) inside the main addevent fucntion and select variable cursor in gsap.to.
 
+Step 7:- 
+Inside the gsap.to(cursor) put the x as dets.x and y as dets.y and add duration for smooth movement while following the cursor
 
-make gsap.to(to move element from initial pos to final pos) inside the eventlistener and select cursor.
-Now set x axis as dets.x and y as dets.y add duration for smoothness
+Task:- 
+Search for easing to set the animation of the custom cursor which is following you.
 
-Search for easing to set the animation of the cursor background it will smooth everything
-
+We are done with the basic custom Cursor now its time to add an image and some more extra
 BASIC CURSOR IS DONE NOW TIME FOR DANGEROUS ANIMATION IN IT
 
 

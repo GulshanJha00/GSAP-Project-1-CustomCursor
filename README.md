@@ -1,14 +1,20 @@
 How To Make It?
 There's a small documentation given below with step by step approach just follow it.
 
-Step 1:- Create html, css, js. Create boiler plate and add GSAP cdn
+Step 1:- 
+Create html, css, js. Create boiler plate and add GSAP cdn
 
-Step 2:- Create div name main with css h,w-100%, bg-black. Add flex property and do its child center
-
-Step 3:- Make another div cursor above div :- h,w-20px, bg-white, border -50%
+Step 2:- 
+create a div #cursor with CSS :- h,w-20px, bg-white, border -50%
 position fixed  so that it will be on screen even if screen scrolls
 
-Select main from dom and save as main and then same as cursor.
+Step 3:- 
+Create another div #main below #cursor with css h,w-100%, bg-black. Add flex property and do its child center
+
+
+Step 4:- 
+Select #main using query Selector(in script.js) and assign it to var main. Similarly do it for cursor
+
 add event in main click and check log as clicked and mousemove
 pass dets as function and check the cords then go for dets.x and dets.y to check whats happening on x and y
 

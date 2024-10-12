@@ -21,4 +21,32 @@ html,body{
     background-color: white;
     border-radius: 50%;
     position: fixed;
+    z-index: 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 6px;
+    color: rgb(0, 255, 26);
+
+}
+
+#image{
+    height: 40vw;
+    width: 80vw;
+    position: relative;
+}
+
+#image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+#overlay{
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    position: absolute;
+    z-index: 10;
 }

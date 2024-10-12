@@ -1,4 +1,4 @@
-step 1:- Create html, css, j and add all gsap and scroll trigger
+Step 1:- Create html, css, js.Create boiler plate and add add gsap cdn
 
 Step 2:- create div name main :- h,w-100%, bg-black make it flex with center
 

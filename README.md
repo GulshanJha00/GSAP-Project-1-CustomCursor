@@ -15,7 +15,9 @@ Create another div #main below #cursor with css h,w-100%, bg-black. Add flex pro
 Step 4:- 
 Select #main using query Selector(in script.js) and assign it to var main. Similarly do it for cursor
 
-add event in main click and check log as clicked and mousemove
+Step 5:- 
+add event on variable main as mousemove and pass dets as function. you can check using console.log(dets.x) to check the coordinates of cursor in x direction. And dets.y to check coordinates of cursor in y direction
+
 pass dets as function and check the cords then go for dets.x and dets.y to check whats happening on x and y
 
 

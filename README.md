@@ -2,17 +2,34 @@ How to Make a Custom Cursor Animation
 Follow the step-by-step approach below to create a smooth custom cursor animation using HTML, CSS, JavaScript, and GSAP.
 
 Step 1: Set Up the Project
+
+
 Create the required files: index.html, style.css, and script.js.
+
+
 In index.html, set up a basic HTML boilerplate.
+
+
 Add the GSAP CDN for animations:
 html
-Copy code
+
+
+Copy code:- 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+
+
 Step 2: Create the Custom Cursor
+
+
 In the HTML file, create a div with the id #cursor.
+
+
 In style.css, style the #cursor to make it visible:
 css
 Copy code
+
+
 #cursor {
     width: 20px;
     height: 20px;
@@ -21,6 +38,8 @@ Copy code
     position: fixed;
     z-index: 9; /* Ensures it stays above other elements */
 }
+
+
 Width & Height: 20px
 Background Color: White
 Border Radius: 50% (to make it circular)

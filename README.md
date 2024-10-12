@@ -1,8 +1,11 @@
-Step 1:- Create html, css, js.Create boiler plate and add add gsap cdn
+How To Make It?
+There's a small documentation given below with step by step approach just follow it.
 
-Step 2:- create div name main :- h,w-100%, bg-black make it flex with center
+Step 1:- Create html, css, js. Create boiler plate and add GSAP cdn
 
-Step 3:- make another div cursor above div :- h,w-20px, bg-white, border -50%
+Step 2:- Create div name main with css h,w-100%, bg-black. Add flex property and do its child center
+
+Step 3:- Make another div cursor above div :- h,w-20px, bg-white, border -50%
 position fixed  so that it will be on screen even if screen scrolls
 
 Select main from dom and save as main and then same as cursor.

@@ -1,172 +1,70 @@
-How to Make a Custom Cursor Animation
-Follow the step-by-step approach below to create a smooth custom cursor animation using HTML, CSS, JavaScript, and GSAP.
+How To Make It?
+There's a small documentation given below with step by step approach just follow it.
 
-Step 1: Set Up the Project
+Step 1:- 
+Create html, css, js. Create boiler plate and add GSAP cdn
 
+Step 2:- 
+Create a div #cursor with CSS :- h,w-20px, bg-white, border -50%
+position fixed  so that it will be on screen even if screen scrolls
 
-Create the required files: index.html, style.css, and script.js.
-
-
-In index.html, set up a basic HTML boilerplate.
-
-
-Add the GSAP CDN for animations:
-html
+Step 3:- 
+Create another div #main below #cursor with css h,w-100%, bg-black. Add flex property and do its child center
 
 
-Copy code:- 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+Step 4:- 
+Select #main using query Selector(in script.js) and assign it to var main. Similarly do it for cursor
+
+Step 5:- 
+Add event on variable main as mousemove and pass dets as function. you can check using console.log(dets.x) to check the coordinates of cursor in x direction. And dets.y to check coordinates of cursor in y direction
+
+Step 6:-
+Now we have the coordinates of x and y while cursor is moving on the screen. Can you think of a property which is used to move any div in any direction? yes gsap.to.
+Now, 
+make gsap.to (to move element from initial pos to final pos) inside the main addevent fucntion and select variable cursor in gsap.to.
+
+Step 7:- 
+Inside the gsap.to(cursor) put the x as dets.x and y as dets.y and add duration for smooth movement while following the cursor
+
+Task:- 
+Search for easing to set the animation of the custom cursor which is following you.
+
+We are done with the basic custom Cursor now its time to add an image and some more extra features.
+
+Step 8:- 
+Make a div #img inside main with css  h-30vw, w-70vw. Create one div #overlay and one img tag with src of any image you like. Add the image css property as height and width as 100% and object-fit: cover.
 
 
+what is div #overlay?
+we will see that later before that lets make it like when the mouse enter the #image div the custom cursor scale should increase.
 
-Step 2: Create the Custom Cursor
-
-
-In the HTML file, create a div with the id #cursor.
-
-
-In style.css, style the #cursor to make it visible:
-css
-Copy code
+Step 9:- 
+Inside script.js make a variable image with query selector with id of cursor.
+Using image variable add event "mouseenter" and use the property of gsap.to(cursor) inside that add scale: 2,
+using this proporty whenever the cursor comes inside image the custom cursor size increases. Similarly make another event "mouseleave" with gsap scaling down to 1.
 
 
-#cursor {
-    width: 20px;
-    height: 20px;
-    background-color: white;
-    border-radius: 50%;
-    position: fixed;
-    z-index: 9; /* Ensures it stays above other elements */
-}
+You might have noticed something. Whenever the size of the custom cursor increases it reduces even before leaving the image, why?
 
+well its because when the size of custom cursor increases it comes between the image and cursor due to which the the contact between the image and cursor cutdown and size starts decreasing. So how can we fix that?
 
-Width & Height: 20px
-Background Color: White
-Border Radius: 50% (to make it circular)
-Position: Fixed, so it remains on screen even when scrolling.
-Step 3: Create the Main Container
-Below the cursor div, create another div with the id #main in your HTML file.
-Style the #main container:
-css
-Copy code
-#main {
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-Width & Height: 100% (to cover the full screen)
-Background Color: Black
-Flex Properties: Center its child elements horizontally and vertically.
-Step 4: Select Elements in JavaScript
-In script.js, select the #main and #cursor elements using document.querySelector and assign them to variables:
-javascript
-Copy code
-var main = document.querySelector("#main");
-var cursor = document.querySelector("#cursor");
-Step 5: Capture Mouse Movement
-Add an event listener to main that listens for the mousemove event:
-javascript
-Copy code
-main.addEventListener("mousemove", function(dets) {
-    console.log(dets.clientX, dets.clientY); // Log the X and Y coordinates
-});
-The dets object (short for "details") contains the cursor’s X and Y coordinates. Use dets.clientX for horizontal movement and dets.clientY for vertical movement.
-Step 6: Animate the Cursor Using GSAP
-Now that we have the mouse coordinates, use GSAP to move the custom cursor to follow the mouse:
-javascript
-Copy code
-main.addEventListener("mousemove", function(dets) {
-    gsap.to(cursor, {
-        x: dets.clientX,
-        y: dets.clientY,
-        duration: 0.1 // Smooth transition
-    });
-});
-gsap.to() is used to animate elements. We move the cursor from its current position to the mouse's X and Y coordinates.
-Step 7: Add Easing for Smoother Animation
-For smoother movement, you can use easing properties with GSAP:
-javascript
-Copy code
-gsap.to(cursor, {
-    x: dets.clientX,
-    y: dets.clientY,
-    duration: 0.1,
-    ease: "power2.out" // Adds easing
-});
-You can explore more easing options from the GSAP documentation to customize the animation behavior further.
-Step 8: Add an Image and Overlay
-Inside the #main div, add a new div #img for an image. Inside #img, create another div #overlay and an img tag:
-html
-Copy code
-<div id="img">
-    <div id="overlay"></div>
-    <img src="your-image.jpg" alt="Example Image">
-</div>
-Style #img, #overlay, and the img tag in style.css:
-css
-Copy code
-#img {
-    width: 70vw;
-    height: 30vw;
-    position: relative; /* Parent must be relative for child to be absolute */
-}
-#overlay {
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    position: absolute;
-    z-index: 10;
-}
-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-Step 9: Scale the Cursor on Hover
-In script.js, select the #img div and add mouseenter and mouseleave events to scale the cursor:
-javascript
-Copy code
-var img = document.querySelector("#img");
+Heres comes the overlay.
+Overlay will be a transparent layer between the image and cursor which will stop the custom cursor to come on between.
 
-img.addEventListener("mouseenter", function() {
-    gsap.to(cursor, {
-        scale: 2, 
-        backgroundColor: "rgba(180, 172, 172, 0.393)",
-        border: "0.3px solid red"
-    });
-    cursor.innerHTML = "View More"; // Add text inside the cursor
-});
+so the order will be image in the bottom, custom cursor on the top then comes overlay and cursor being top of all.
 
-img.addEventListener("mouseleave", function() {
-    gsap.to(cursor, {
-        scale: 1, 
-        backgroundColor: "white"
-    });
-    cursor.innerHTML = ""; // Clear text
-});
-Step 10: Fix the Cursor Hover Issue with Overlay
-When the cursor grows, it might block the hover state over the image. To fix this, add a transparent overlay (#overlay) between the image and the cursor.
+Step 10:-
+Now the css of overlay will be height and width - 100% background color: transparent. Why? Because it will help us to see whats behind the overlay i.e the original image. We want the positon to be absolute so to make #overlay absolute we need to make its parents #image as postion relative.
+Step:- 11 final touch
+Make the cursor's z-index 9 and overlay's z-index 10
+cur z-i 9
+over z-i 10
+inside the script.js image "mousenter" you can add cursor.innerHTML = "view more" and adjust cursor css as text will be inside the small circle
+and when the mouseleave make cursor.innerHTML = ""
+and for final touch add in #cursor css 
+font-size: 6px; color: rgb(0, 255, 26); and
 
-Set the #overlay to be above the image but below the cursor with CSS z-index values:
+in script.js inside "mouseenter" gsap.to you can add backgroundColor and border as backgroundColor: "rgba(180, 172, 172, 0.393)", border: "0.3px solid red",
 
-Cursor z-index: 9
-Overlay z-index: 10
-This allows the cursor to grow without interfering with the image hover.
-
-Step 11: Final Touches
-Add text customization for the cursor when hovering over the image:
-css
-Copy code
-#cursor {
-    font-size: 6px;
-    color: rgb(0, 255, 26);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-In mouseenter, add custom text and styles. On mouseleave, revert to the original styles.
-And that’s it! You’ve now created a fully functional custom cursor with GSAP animations and hover interactions.
-
+and in "mouseleave" gsap background color back to white
+and your code is ready
